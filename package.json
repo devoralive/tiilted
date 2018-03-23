@@ -1,23 +1,26 @@
 {
   "name": "Tiilted",
-  "version": "1.0.0",
-  "description": "Awesome SQL Client",
-  "main": "electron-starter.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "knex": "^0.14.4",
+    "mysql": "^2.15.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/devoralive/tiilted",
-  "keywords": [],
-  "author": "Devoralive",
-  "license": "CC0-1.0",
+  "main": "electron-starter.js",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "electron-prebuilt-compile": "^1.6.11",
     "electron-react-devtools": "^0.4.0"
   },
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  }
+  "description": "Awesome SQL Client",
+  "repository": "https://github.com/devoralive/tiilted",
+  "keywords": [],
+  "author": "Devoralive",
+  "license": "CC0-1.0"
 }
