@@ -18,15 +18,31 @@ const favoris = [
   "PRODUCTS"
 ]
 
+function TableRow(props) {
+  return (
+    <ListGroupItem key={props.index} className="px-0">
+      <a href="#" className="mx-2"><i className="far fa-star text-warning"></i></a>
+      <a href="#">{props.name}</a>
+      <div className="float-right">
+        <a href="#" className="mx-1"><i className="fas fa-pencil-alt text-primary"></i></a>
+        <a href="#" className="mx-1"><i className="fas fa-trash-alt text-danger"></i></a>
+      </div>
+    </ListGroupItem>
+  )
+}
+
 function TableContainer(props) {
   if (props.tables.length > 0)
   {
     return (
       <div className="table-container">
+      
+        <p className="m-0"><b>Base de donnée</b> :</p>
         <Breadcrumb>
-          <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
-          <BreadcrumbItem active>Library</BreadcrumbItem>
+          <BreadcrumbItem><a href="#">localhost</a></BreadcrumbItem>
+          <BreadcrumbItem active>tiilted</BreadcrumbItem>
         </Breadcrumb>
+        <hr/>
 
         <Form className="quick-search-container">
           <FormGroup>
@@ -35,8 +51,9 @@ function TableContainer(props) {
           </FormGroup>
         </Form>
 
+        <h3>Tables :</h3>
         <ListGroup>
-          {props.tables.sort().map(function (table, index) { return <ListGroupItem tag="a" href="#" key={index}>{table}</ListGroupItem> })}
+          {props.tables.sort().map(function (table, index) { return <TableRow key={index} name={table} /> })}
         </ListGroup>
 
         <Button color="success" className="my-2"><i className="fas fa-plus"></i> Ajouter une table</Button>
@@ -59,6 +76,17 @@ function TableContainer(props) {
   }
 }
 
+function QueryContainer () {
+  return (
+    <Form>
+      <FormGroup>
+        <Label for="exampleText">Query :</Label>
+        <Input type="textarea" name="text" id="exampleText" />
+      </FormGroup>
+    </Form>
+  )
+}
+
 // Components
 const App = () => (
   <div className="App">
@@ -71,12 +99,15 @@ const App = () => (
         <Col md="8">
           <Row className="query-container">
             <Col>
-              Mon texte
+              <QueryContainer />
             </Col>
           </Row>
 
           <Row className="result-container">
-            <Col md="12">Résultats de la query</Col>
+            <Col md="12">
+              <hr/>
+              Résultats de la query / Visualisateur des données
+            </Col>
           </Row>
         </Col>
       </Row>
