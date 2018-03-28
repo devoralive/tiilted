@@ -6,14 +6,32 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const Store = require('./app/connectors/storage.js')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+const store = new Store({
+  // We'll call our data file 'user-preferences'
+  configName: 'user-preferences',
+  defaults: {
+    // 800x600 is the default size of our window
+    windowBounds: { width: 1200, height: 600 }
+  }
+})
+
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 600})
+  let { width, height } = store.get('windowBounds')
+  mainWindow = new BrowserWindow({ width, height })
+
+  mainWindow.on('resize', () => {
+    let { width, height } = mainWindow.getBounds();
+    // Now that we have them, save them using the `set` method.
+    store.set('windowBounds', { width, height })
+  })
+
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -21,10 +39,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  mainWindow.webContents.openDevTools()
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
