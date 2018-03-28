@@ -40,5 +40,16 @@ function parseDataFile(filePath, defaults) {
   }
 }
 
+
+// Storage initialization
+const storage = new Store({
+  // We'll call our data file 'user-preferences'
+  configName: 'user-preferences',
+  defaults: {
+    // 800x600 is the default size of our window
+    windowBounds: { width: 1200, height: 600 }
+  }
+})
+
 // expose the class
-module.exports = Store;
+module.exports = storage;
