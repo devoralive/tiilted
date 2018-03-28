@@ -4,7 +4,7 @@ import { ListGroup } from 'reactstrap';
 
 const SideBar = ({ databases }) => (
   <ListGroup>
-    {databases.map((database, key) => (<Database key={key} name={database} />))}
+    { databases && databases.map(db => (<Database key={db.name} name={db.name} />)) }
   </ListGroup>
 );
 

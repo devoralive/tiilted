@@ -1,15 +1,16 @@
-import { PUSH_DATABASE } from './../action/database'
+import { PUSH_DATABASE } from './../actions/database'
 
-const database = (state = [], {type, ...action}) => {
-    switch (type) {
+const Database = (state = [], action) => {
+    console.log(state)
+    switch (action.type) {
         case PUSH_DATABASE:
             return [
                 ...state,
-                {name: action.name}
+                { name: action.name }
             ]
         default:
             return state
     }
 }
 
-export default database
+export default Database

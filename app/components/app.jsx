@@ -2,7 +2,6 @@
 import React from 'react';
 import { Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button } from 'reactstrap';
 import SideBar from './side-bar';
-import MysqlConnector from './../connectors/mysql';
 
 const list_1 = []
 
@@ -20,7 +19,6 @@ const favoris = [
   "PRODUCTS"
 ]
 
-MysqlConnector.raw('show databases').then(data => console.log(data));
 
 function TableRow({ index, name }) {
   return (
@@ -56,7 +54,7 @@ function TableContainer({ databases, favoris }) {
 
         <h3>Tables :</h3>
         <ListGroup>
-          <SideBar databases={databases} />
+          <SideBar />
         </ListGroup>
 
         <Button color="success" className="my-2"><i className="fas fa-plus"></i> Ajouter une table</Button>
