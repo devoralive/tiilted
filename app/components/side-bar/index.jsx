@@ -2,9 +2,9 @@ import React from 'react';
 import Database from './database';
 import { ListGroup } from 'reactstrap';
 
-const SideBar = (props) => (
+const SideBar = ({ databases }) => (
   <ListGroup>
-    {props.databases.map((database, key) => (<Database key={key} name={database} />))}
+    {databases.map((database, key) => (<Database key={key} name={database} />))}
   </ListGroup>
 );
 

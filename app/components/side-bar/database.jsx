@@ -1,9 +1,9 @@
 import React from 'react';
 import { TableRow } from 'reactstrap';
 
-const Database = (props) => (
+const Database = ({ name }) => (
   <li>
-    <div className="database-name">{props.name}</div>
+    <div className="database-name">{name}</div>
   </li>
 );
 

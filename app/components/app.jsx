@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button } from 'reactstrap';
 import SideBar from './side-bar';
+import MysqlConnector from './../connectors/mysql';
 
 const list_1 = []
 
@@ -19,11 +20,13 @@ const favoris = [
   "PRODUCTS"
 ]
 
-function TableRow(props) {
+MysqlConnector.raw('show databases').then(data => console.log(data));
+
+function TableRow({ index, name }) {
   return (
-    <ListGroupItem key={props.index} className="px-0">
+    <ListGroupItem key={index} className="px-0">
       <a href="#" className="mx-2"><i className="far fa-star text-warning"></i></a>
-      <a href="#">{props.name}</a>
+      <a href="#">{name}</a>
       <div className="float-right">
         <a href="#" className="mx-1"><i className="fas fa-pencil-alt text-primary"></i></a>
         <a href="#" className="mx-1"><i className="fas fa-trash-alt text-danger"></i></a>
@@ -32,9 +35,8 @@ function TableRow(props) {
   )
 }
 
-function TableContainer(props) {
-  if (props.tables.length > 0)
-  {
+function TableContainer({ databases, favoris }) {
+  if (databases.length > 0) {
     return (
       <div className="table-container">
 
@@ -54,7 +56,7 @@ function TableContainer(props) {
 
         <h3>Tables :</h3>
         <ListGroup>
-          <SideBar tables={props.tables} />
+          <SideBar databases={databases} />
         </ListGroup>
 
         <Button color="success" className="my-2"><i className="fas fa-plus"></i> Ajouter une table</Button>
@@ -62,7 +64,7 @@ function TableContainer(props) {
         <div className="table-favoris-container my-4">
           <p>Dernières tables consultées :</p>
           <ListGroup>
-            {props.tablesFavoris.sort().map(function (table, index) { return <ListGroupItem tag="a" href="#" key={index}>{table}</ListGroupItem> })}
+            {favoris.sort().map((table, index) => (<ListGroupItem tag="a" href="#" key={index}>{table}</ListGroupItem>))}
           </ListGroup>
         </div>
       </div>
@@ -94,7 +96,7 @@ const App = () => (
     <Container fluid={true}>
       <Row>
         <Col md="4">
-          <TableContainer tables={list} tablesFavoris={favoris} />
+          <TableContainer databases={list} favoris={favoris} />
         </Col>
 
         <Col md="8">
