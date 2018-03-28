@@ -1,13 +1,20 @@
-import { PUSH_DATABASE } from './../actions/database'
+import { PUSH_DATABASE, SELECT_DATABASE } from './../actions/database'
 
 const Database = (state = [], action) => {
-    console.log(state)
     switch (action.type) {
         case PUSH_DATABASE:
             return [
                 ...state,
-                { name: action.name }
+                { name: action.name, selected: false }
             ]
+        case SELECT_DATABASE:
+            return state.map(db => {
+                db.selected = false
+                if (db.name === action.name) {
+                    db.selected = true
+                }
+                return db
+            })
         default:
             return state
     }
