@@ -1,3 +1,7 @@
+-- Run :
+-- mysql -u root -ptiilted -P 3366 -h 0.0.0.0 test < test.sql
+-- to populate test database
+
 DROP TABLE IF EXISTS `tiilted`;
 DROP TABLE IF EXISTS `tiilt`;
 DROP TABLE IF EXISTS `devoralive`;
