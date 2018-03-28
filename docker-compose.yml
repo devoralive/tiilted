@@ -6,10 +6,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: tiilted
+      MYSQL_DATABASE: test
     ports:
-      - 3306:3306
+      - 3366:3306
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8090:8080

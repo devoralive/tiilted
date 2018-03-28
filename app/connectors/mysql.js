@@ -6,7 +6,7 @@ const connection = Knex({
         host: '0.0.0.0',
         user: 'root',
         password: 'tiilted',
-        port: '3306'
+        port: '3366'
     },
     debug: true
 });
