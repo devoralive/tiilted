@@ -1,6 +1,7 @@
 // Libraries
 import React from 'react';
-import {Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button} from 'reactstrap';
+import { Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button } from 'reactstrap';
+import SideBar from './side-bar';
 
 const list_1 = []
 
@@ -14,7 +15,7 @@ const list = [
 ]
 
 const favoris = [
-  "USERS", 
+  "USERS",
   "PRODUCTS"
 ]
 
@@ -36,7 +37,7 @@ function TableContainer(props) {
   {
     return (
       <div className="table-container">
-      
+
         <p className="m-0"><b>Base de donnée</b> :</p>
         <Breadcrumb>
           <BreadcrumbItem><a href="#">localhost</a></BreadcrumbItem>
@@ -53,7 +54,7 @@ function TableContainer(props) {
 
         <h3>Tables :</h3>
         <ListGroup>
-          {props.tables.sort().map(function (table, index) { return <TableRow key={index} name={table} /> })}
+          <SideBar tables={props.tables} />
         </ListGroup>
 
         <Button color="success" className="my-2"><i className="fas fa-plus"></i> Ajouter une table</Button>
@@ -63,7 +64,7 @@ function TableContainer(props) {
           <ListGroup>
             {props.tablesFavoris.sort().map(function (table, index) { return <ListGroupItem tag="a" href="#" key={index}>{table}</ListGroupItem> })}
           </ListGroup>
-        </div>        
+        </div>
       </div>
     )
   } else {
