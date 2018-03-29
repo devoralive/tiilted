@@ -1,10 +1,16 @@
 import Connector from './../connectors/mysql'
+import { getTables } from './table'
 
 export const SELECT_DATABASE = Symbol('@@database/SELECT')
 export const selectDatabase = name => {
-    return {
-        type: SELECT_DATABASE,
-        name
+    return dispatch => {
+        Connector.raw(`use ${name}`).then(
+            () => dispatch(getTables(name))
+        )
+        dispatch({
+            type: SELECT_DATABASE,
+            name
+        })
     }
 }
 
