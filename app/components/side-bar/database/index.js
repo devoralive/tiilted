@@ -4,7 +4,6 @@ import Database from './database'
 import { selectDatabase } from './../../../actions/database'
 
 const mapDispatchToProps = (dispatch, props) => {
-    console.log(props);
   return {
     onClick: () => {
       dispatch(selectDatabase(props.name))

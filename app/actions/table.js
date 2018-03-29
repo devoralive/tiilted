@@ -16,6 +16,13 @@ const pushTable = name => {
     }
 }
 
+export const RESET_TABLES = Symbol('@@table/RESET')
+const resetTables = () => {
+    return {
+        type: RESET_TABLES
+    }
+}
+
 const fetchTables = () => {
     return Connector.raw('show tables')
 }
@@ -24,6 +31,7 @@ export const getTables = (name) => {
     const propertyName = `Tables_in_${name}`
 
     return dispatch => {
+        dispatch(resetTables())
         return fetchTables().then(
             tables => tables[0].map(table => {
                 dispatch(pushTable(table[propertyName]))

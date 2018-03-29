@@ -1,7 +1,9 @@
-import { PUSH_TABLE, SELECT_TABLE } from './../actions/table'
+import { PUSH_TABLE, SELECT_TABLE, RESET_TABLES } from './../actions/table'
 
 const tables = (state = [], action) => {
     switch (action.type) {
+        case RESET_TABLES:
+            return []
         case PUSH_TABLE:
             return [
                 ...state,
@@ -19,3 +21,5 @@ const tables = (state = [], action) => {
             return state
     }
 }
+
+export default tables
