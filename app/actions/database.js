@@ -1,7 +1,7 @@
 import Connector from './../connectors/mysql'
 import { getTables } from './table'
 
-export const SELECT_DATABASE = Symbol('@@database/SELECT')
+export const SELECT_DATABASE = Symbol('@@database/SELECT_DATABASE')
 export const selectDatabase = name => {
     return dispatch => {
         Connector.raw(`use ${name}`).then(
@@ -14,7 +14,7 @@ export const selectDatabase = name => {
     }
 }
 
-export const PUSH_DATABASE = Symbol('@@database/PUSH')
+export const PUSH_DATABASE = Symbol('@@database/PUSH_DATABASE')
 const pushDatabase = name => {
     return {
         type: PUSH_DATABASE,
