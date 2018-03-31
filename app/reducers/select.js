@@ -1,7 +1,7 @@
 import { PUSH_RESULT, RESET_RESULTS, UPDATE_RESULT, PUSH_DESC } from './../actions/select'
 
 const defaultValue = {
-    desc: [],
+    columns: [],
     results: [],
     count: 0
 }
@@ -45,11 +45,11 @@ const select = (state = defaultValue, action) => {
         case UPDATE_RESULT:
             return {
                 ...state,
-                results: state.result.map(resultState => (result(resultState, action)}))
+                results: state.result.map(resultState => (result(resultState, action)))
             }
         case PUSH_DESC:
             return {
-                desc: state.payload,
+                columns: state.payload,
                 ...state
             }
         default:
