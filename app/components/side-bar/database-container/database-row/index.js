@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import Database from './database'
-import { selectDatabase } from './../../../actions/database'
+import DatabaseRow from './database-row.jsx'
+import { selectDatabase } from './../../../../actions/database'
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch, props) => {
 const DatabaseContainer = connect(
   null,
   mapDispatchToProps
-)(Database)
+)(DatabaseRow)
 
 export default DatabaseContainer

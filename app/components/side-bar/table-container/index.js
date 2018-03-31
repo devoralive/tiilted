@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Tables from './tables'
+import TableList from './table-list'
 
 const mapStateToProps = (state) => {
   return {
@@ -8,8 +8,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const TablesContainer = connect(
+const TableContainer = connect(
   mapStateToProps
-)(Tables)
+)(TableList)
 
-export default TablesContainer
+export default TableContainer

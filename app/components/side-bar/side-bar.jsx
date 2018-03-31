@@ -1,11 +1,31 @@
 import React from 'react';
-import Database from './database';
-import { ListGroup } from 'reactstrap';
+import { Button, ListGroup } from 'reactstrap';
 
-const SideBar = ({ databases }) => (
-  <ListGroup>
-    { databases && databases.map(db => (<Database key={db.name} {...db} />)) }
-  </ListGroup>
-);
+import QuickSearch from './quick-search';
+import DatabaseContainer from './database-container';
+import TableContainer from './table-container';
+
+const SideBar = ({ databases }) => {
+  
+  if (databases.length > 0) {
+    return (
+      <div className="sidebar-container">
+        <QuickSearch />
+
+        <DatabaseContainer />
+
+        <TableContainer />
+      </div>
+    )
+  } else {
+    return (
+      <div className="sidebar-container">
+        <p className="m-0">Il n'y a aucunes données dans la base de données</p>
+        <Button color="primary">Créer une nouvelle base</Button>
+      </div>
+    )
+  }
+}
+  
 
 export default SideBar;
