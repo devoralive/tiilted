@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
+
 import Header from './header'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
+  console.log(state.select)
   return {
-    ...ownProps,
     columns: state.select.columns
   }
 }

@@ -1,24 +1,25 @@
-import { PUSH_RESULT, RESET_RESULTS, UPDATE_RESULT, PUSH_DESC } from './../actions/select'
+import { PUSH_RESULT, RESET_RESULTS, UPDATE_RESULT, PUSH_COLUMNS } from './../actions/select'
 
-const defaultValue = {
+const defaultState = {
     columns: [],
     results: [],
     count: 0
 }
 
-const result = (state= {}, action) => {
+const defaultResult = {
+    is_dirty: false
+}
+
+const result = (state = defaultResult, action) => {
     switch (action.type) {
         case PUSH_RESULT:
-            return {
-                ...action.payload,
-                is_dirty: false
-            }
+            const data = action.payload
+            return Object.assign({}, state, action.payload);
         case UPDATE_RESULT:
             if (action.id === state.id) {
-                const newState = {
-                    ...state,
+                const newState = Object.assign({}, state, {
                     is_dirty: true
-                }
+                })
                 newState[action.key] = action.value
 
                 return newState
@@ -29,29 +30,29 @@ const result = (state= {}, action) => {
     }
 }
 
-const select = (state = defaultValue, action) => {
+const select = (state = defaultState, action) => {
     switch (action.type) {
         case RESET_RESULTS:
-            return defaultValue
+            return defaultState
         case PUSH_RESULT:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 results: [
                     ...state.results,
                     result(undefined, action)
                 ],
-                count: state.count + 1
-            }
+                count: (state.count + 1)
+            })
         case UPDATE_RESULT:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 results: state.result.map(resultState => (result(resultState, action)))
-            }
-        case PUSH_DESC:
-            return {
-                columns: state.payload,
-                ...state
-            }
+            })
+        case PUSH_COLUMNS:
+            return Object.assign({}, state, {
+                columns: [
+                    ...state.columns,
+                    action.column
+                ]
+            })
         default:
             return state
     }

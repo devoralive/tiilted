@@ -1,10 +1,14 @@
 import Connector from './../connectors/mysql'
+import { getColumns } from './select'
 
 export const SELECT_TABLE = Symbol('@@table/SELECT_TABLE')
 export const selectTable = name => {
-    return {
-        type: SELECT_TABLE,
-        name
+    return dispatch => {
+        dispatch(getColumns(name))
+        dispatch({
+            type: SELECT_TABLE,
+            name
+        })
     }
 }
 
