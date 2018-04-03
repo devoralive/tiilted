@@ -7,8 +7,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const DatabaseContainer = connect(
+const DatabaseListContainer = connect(
   mapStateToProps
 )(DatabaseList)
 
-export default DatabaseContainer
+export default DatabaseListContainer

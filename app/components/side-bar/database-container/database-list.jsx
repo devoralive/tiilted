@@ -7,7 +7,7 @@ const DatabaseList = ({ databases }) => (
   <div className="database-container">
     <h3>Base de données :</h3>
     <ListGroup>
-      { databases && databases.map( (db,index) => ( <DatabaseRow key={index} {...db}/> )) }
+      { databases && databases.map( (db) => ( <DatabaseRow key={db.name} {...db}/> )) }
     </ListGroup>
   </div>
 )

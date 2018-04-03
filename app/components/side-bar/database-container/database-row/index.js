@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch, props) => {
   }
 }
 
-const DatabaseContainer = connect(
+const DatabaseRowContainer = connect(
   null,
   mapDispatchToProps
 )(DatabaseRow)
 
-export default DatabaseContainer
+export default DatabaseRowContainer
