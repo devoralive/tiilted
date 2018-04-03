@@ -1,8 +1,8 @@
-import { PUSH_RESULT, RESET_RESULTS, UPDATE_RESULT, PUSH_COLUMNS } from './../actions/select'
+import { PUSH_RESULT, RESET_RESULTS, UPDATE_RESULT, PUSH_COLUMNS } from './../actions/rows'
 
 const defaultState = {
     columns: [],
-    results: [],
+    rows: [],
     count: 0
 }
 
@@ -13,7 +13,6 @@ const defaultResult = {
 const result = (state = defaultResult, action) => {
     switch (action.type) {
         case PUSH_RESULT:
-            const data = action.payload
             return Object.assign({}, state, action.payload);
         case UPDATE_RESULT:
             if (action.id === state.id) {
@@ -36,8 +35,8 @@ const select = (state = defaultState, action) => {
             return defaultState
         case PUSH_RESULT:
             return Object.assign({}, state, {
-                results: [
-                    ...state.results,
+                rows: [
+                    ...state.rows,
                     result(undefined, action)
                 ],
                 count: (state.count + 1)

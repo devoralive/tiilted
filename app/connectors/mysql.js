@@ -1,6 +1,6 @@
-import Knex from 'knex';
+import Knex from 'knex'
 
-const connection = Knex({
+export const defaultConnection = Knex({
     client: 'mysql',
     connection: {
         host: '0.0.0.0',
@@ -9,6 +9,18 @@ const connection = Knex({
         port: '3366'
     },
     debug: true
-});
+})
 
-export default connection;
+export const getConnection = (database) => {
+    return Knex({
+        client: 'mysql',
+        connection: {
+            host: '0.0.0.0',
+            user: 'root',
+            password: 'tiilted',
+            port: '3366',
+            database
+        },
+        debug: true
+    })
+}

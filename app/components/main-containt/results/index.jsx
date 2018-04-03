@@ -1,10 +1,12 @@
 import React from 'react'
 import Header from './header'
+import Rows from './rows'
 
-const results = (props) => (
+const Results = () => (
   <div>
     <Header />
+    <Rows />
   </div>
 )
 
-export default results
+export default Results

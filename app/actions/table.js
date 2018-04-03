@@ -1,10 +1,10 @@
-import Connector from './../connectors/mysql'
-import { getColumns } from './select'
+import connect from './../connectors'
+import { getData } from './rows'
 
 export const SELECT_TABLE = Symbol('@@table/SELECT_TABLE')
 export const selectTable = name => {
     return dispatch => {
-        dispatch(getColumns(name))
+        dispatch(getData(name))
         dispatch({
             type: SELECT_TABLE,
             name
@@ -28,7 +28,7 @@ const resetTables = () => {
 }
 
 const fetchTables = () => {
-    return Connector.raw('show tables')
+    return connect().raw('show tables')
 }
 
 export const getTables = (name) => {

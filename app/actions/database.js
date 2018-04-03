@@ -1,12 +1,11 @@
-import Connector from './../connectors/mysql'
+import connect, { setConnection } from './../connectors'
 import { getTables } from './table'
 
 export const SELECT_DATABASE = Symbol('@@database/SELECT_DATABASE')
 export const selectDatabase = name => {
     return dispatch => {
-        Connector.raw(`use ${name}`).then(
-            () => dispatch(getTables(name))
-        )
+        setConnection(name)
+        dispatch(getTables(name))
         dispatch({
             type: SELECT_DATABASE,
             name
@@ -23,7 +22,7 @@ const pushDatabase = name => {
 }
 
 const fetchDatabases = () => {
-    return Connector.raw('show databases')
+    return connect().raw('show databases')
 }
 
 export const getDatabases = () => {

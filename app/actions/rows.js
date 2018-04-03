@@ -1,4 +1,4 @@
-import Connector from './../connectors/mysql'
+import connect from './../connectors'
 
 export const PUSH_RESULT = Symbol('@@select/PUSH_RESULT')
 export const pushResult = (result) => {
@@ -33,17 +33,39 @@ const pushColumns = (data) => {
 }
 
 const fetchColumns = (tableName) => {
-    return Connector.raw(`desc ${tableName}`)
+    return connect().raw(`desc ${tableName}`)
 }
 
-export const getColumns = (tableName) => {
+const fetchData = (tableName) => {
+    return connect().raw(`SELECT * FROM ${tableName} LIMIT 20`)
+}
+
+const getColumns = (tableName) => {
     return dispatch => {
-        dispatch(resetResults())
         return fetchColumns(tableName).then(
             columns =>  columns[0].map(column => {
                 dispatch(pushColumns(column.Field))
             }),
             err => { console.error(err) }
         )
+    }
+}
+
+const getSelect = (tableName) => {
+    return dispatch => {
+        return fetchData(tableName).then(
+            rows => rows[0].map(row => {
+                dispatch(pushResult(row))
+            }),
+            err => { console.error(err) }
+        )
+    }
+}
+
+export const getData = (tableName) => {
+    return dispatch => {
+        dispatch(resetResults())
+        dispatch(getColumns(tableName))
+        dispatch(getSelect(tableName))
     }
 }
