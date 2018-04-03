@@ -1,12 +1,13 @@
 import React from 'react'
+import { Table } from 'reactstrap'
 import Header from './header'
 import Rows from './rows'
 
 const Results = () => (
-  <div>
+  <Table responsive={true}>
     <Header />
     <Rows />
-  </div>
+  </Table>
 )
 
 export default Results

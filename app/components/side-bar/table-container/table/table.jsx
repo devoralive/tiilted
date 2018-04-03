@@ -1,7 +1,8 @@
 import React from 'react'
+import { ListGroupItem } from 'reactstrap'
 
-const Table = ({ name, onClick }) => (
-  <li onClick={onClick}>{name}</li>
+const TableItem = ({ name, selected, onClick }) => (
+  <ListGroupItem onClick={onClick} color={`${selected && 'warning'}`} className="py-1">{name}</ListGroupItem>
 )
 
-export default Table
+export default TableItem

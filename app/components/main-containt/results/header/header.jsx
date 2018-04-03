@@ -2,9 +2,11 @@ import React from 'react'
 
 
 const Header = ({ columns }) => (
-  <div>
-    { columns.map(column => (<span key={column}>{column}</span>)) }
-  </div>
+  <thead>
+    <tr>
+      { columns.map(column => (<th key={column}>{column}</th>)) }
+    </tr>
+  </thead>
 )
 
 export default Header
