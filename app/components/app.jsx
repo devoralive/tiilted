@@ -1,7 +1,8 @@
 // Libraries
-import React from 'react';
-import { Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button } from 'reactstrap';
-import SideBar from './side-bar';
+import React from 'react'
+import { Container, Row, Col,Form, FormGroup, Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem, Label, Input, Button } from 'reactstrap'
+import SideBar from './side-bar'
+import MainContaint from './main-containt/results'
 
 
 
@@ -47,8 +48,7 @@ const App = () => (
 
           <Row className="result-container">
             <Col md="12">
-              <hr/>
-              Résultats de la query / Visualisateur des données
+              <MainContaint />
             </Col>
           </Row>
         </Col>

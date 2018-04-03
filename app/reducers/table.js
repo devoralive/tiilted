@@ -12,9 +12,7 @@ const tables = (state = [], action) => {
         case SELECT_TABLE:
             return state.map(db => {
                 db.selected = false
-                if (db.name === action.name) {
-                    db.selected = true
-                }
+                if (db.name === action.name) { db.selected = true }
                 return db
             })
         default:
