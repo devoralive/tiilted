@@ -4,7 +4,7 @@ import Header from './header'
 import Rows from './rows'
 
 const Results = () => (
-  <Table responsive={true}>
+  <Table responsive size="sm">
     <Header />
     <Rows />
   </Table>
