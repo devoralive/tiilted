@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TableItem from './table'
+import TableRow from './table-row.jsx'
 import { selectTable } from './../../../../actions/table'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -13,6 +13,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const TableContainer = connect(
   undefined,
   mapDispatchToProps
-)(TableItem)
+)(TableRow)
 
 export default TableContainer

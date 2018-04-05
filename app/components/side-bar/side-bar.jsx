@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, ListGroup } from 'reactstrap';
 
 import QuickSearch from './quick-search';
-import DatabaseContainer from './database-container';
-import TableContainer from './table-container';
+import DatabaseContainer from './database-list';
+import TableContainer from './table-list';
 
 const SideBar = ({ databases }) => {
   

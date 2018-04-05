@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListGroup, ListGroupItem, Button } from 'reactstrap'
-import TableItem from './table'
+import TableRow from './table-row'
 
 const TableList = ({tables}) => (
   <div className="table-container my-4">
@@ -9,7 +9,7 @@ const TableList = ({tables}) => (
       { tables.length > 0 && (<Button color="success"><i className="fas fa-plus"></i></Button>) }
     </div>
     <ListGroup>
-      { tables && tables.map(table => (<TableItem key={table.name} {...table} />)) }
+      { tables && tables.map(table => (<TableRow key={table.name} {...table} />)) }
       { tables.length === 0 && (<ListGroupItem>Aucunes tables à afficher</ListGroupItem>) }
     </ListGroup>
   </div>
