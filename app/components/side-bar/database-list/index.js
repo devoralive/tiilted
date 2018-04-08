@@ -3,7 +3,8 @@ import DatabaseList from './database-list.jsx'
 
 const mapStateToProps = (state) => {
   return {
-    databases: state.databases
+    databases: state.databases,
+    accordionOpen: state.app.accordionDatabaseOpen
   }
 }
 

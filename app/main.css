@@ -1,0 +1,3 @@
+.accordion-bread.accordion-close :not(.active) {
+  display: none;
+}

@@ -2,6 +2,7 @@ import connect, { setConnection } from './../connectors'
 import { getTables } from './table'
 
 export const SELECT_DATABASE = Symbol('@@database/SELECT_DATABASE')
+export const TOGGLE_ACCORDION_DATABASE = Symbol('@@database/TOGGLE_ACCORDION_DATABASE')
 export const selectDatabase = name => {
     return dispatch => {
         setConnection(name)
@@ -9,6 +10,9 @@ export const selectDatabase = name => {
         dispatch({
             type: SELECT_DATABASE,
             name
+        })
+        dispatch({
+            type: TOGGLE_ACCORDION_DATABASE
         })
     }
 }
