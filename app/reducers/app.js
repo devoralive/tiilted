@@ -1,4 +1,4 @@
-import { TOGGLE_ACCORDION_DATABASE } from './../actions/database'
+import { TOGGLE_ACCORDION_DATABASE } from './../actions/app'
 
 const defaultState = {
   accordionDatabaseOpen: true
