@@ -6,7 +6,7 @@ const TableList = ({tables}) => (
   <div className="table-container my-4">
     <div className="d-flex justify-content-between mb-2">
       <h3 className="font-weight-light">Tables :</h3>
-      { tables.length > 0 && (<Button color="success"><i className="fas fa-plus"></i></Button>) }
+      <Button color="success"><i className="fas fa-plus"></i></Button>
     </div>
     <ListGroup>
       { tables && tables.map(table => (<TableRow key={table.name} {...table} />)) }

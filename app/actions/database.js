@@ -1,15 +1,18 @@
 import connect, { setConnection } from './../connectors'
 import { getTables } from './table'
+import { toggleAccordionDatabase } from './app'
 
 export const SELECT_DATABASE = Symbol('@@database/SELECT_DATABASE')
 export const selectDatabase = name => {
+    
     return dispatch => {
         setConnection(name)
         dispatch(getTables(name))
         dispatch({
             type: SELECT_DATABASE,
             name
-        })
+        })        
+        dispatch(toggleAccordionDatabase())
     }
 }
 

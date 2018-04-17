@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import DatabaseRow from './database-row.jsx'
 import { selectDatabase } from './../../../../actions/database'
 
+const mapStateToProps = (state) => {
+  return {
+    accordionOpen: state.app.accordionDatabaseOpen
+  }
+}
+
 const mapDispatchToProps = (dispatch, props) => {
   return {
     onClick: () => {
@@ -12,7 +18,7 @@ const mapDispatchToProps = (dispatch, props) => {
 }
 
 const DatabaseRowContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(DatabaseRow)
 
